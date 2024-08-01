@@ -22,6 +22,7 @@ export default function DashboardComp() {
   const [lastMonthVideos, setLastMonthVideos] = useState(0);
   const [lastMonthComments, setLastMonthComments] = useState(0);
   const { currentUser } = useSelector((state) => state.user);
+  
 
   useEffect(() => {
     const fetchUsers = async () => {

@@ -17,6 +17,7 @@ export default function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const dropdownRef = useRef(null);
   const profileButtonRef = useRef(null);
+  
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);

@@ -6,6 +6,7 @@ import VideoCard from "../components/VideoCard";
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [videos, setVideos] = useState([]);
+  
 
   useEffect(() => {
     const fetchVideos = async () => {
