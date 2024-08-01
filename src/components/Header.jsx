@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/theme/themeSlice";
 import { signoutSuccess } from "../redux/user/userSlice";
-import { useEffect, useState } from "react";
+import { gsap } from "gsap";
 
 export default function Header() {
   const path = useLocation().pathname;
@@ -26,7 +26,12 @@ export default function Header() {
     }
   }, [location.search]);
 
-
+  useEffect(() => {
+    // Initial hide of dropdown
+    if (currentUser && dropdownRef.current) {
+      gsap.set(dropdownRef.current, { opacity: 0, pointerEvents: "none" });
+    }
+  }, [currentUser]);
 
   const handleSignout = async () => {
     try {
@@ -53,19 +58,23 @@ export default function Header() {
   };
 
   const handleMouseEnter = () => {
-    gsap.to(dropdownRef.current, {
-      opacity: 1,
-      pointerEvents: "auto",
-      duration: 0.3,
-    });
+    if (currentUser && dropdownRef.current) {
+      gsap.to(dropdownRef.current, {
+        opacity: 1,
+        pointerEvents: "auto",
+        duration: 0.3,
+      });
+    }
   };
 
   const handleMouseLeave = () => {
-    gsap.to(dropdownRef.current, {
-      opacity: 0,
-      pointerEvents: "none",
-      duration: 0.3,
-    });
+    if (currentUser && dropdownRef.current) {
+      gsap.to(dropdownRef.current, {
+        opacity: 0,
+        pointerEvents: "none",
+        duration: 0.3,
+      });
+    }
   };
 
   return (
@@ -73,11 +82,16 @@ export default function Header() {
       <div className="max-w-[90%] mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img
-            className="w-[50px]"
+            className="w-[70px]"
             src="https://firebasestorage.googleapis.com/v0/b/projects-images.appspot.com/o/logo-(1).png?alt=media&token=fd468f51-42a9-488a-8b93-0582a7ee8389"
           />
-          <span className="text-2xl">Quote Rider</span>
         </Link>
+        <Link to='/' className='font-bold text-4xl dark:text-white'>
+            <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
+              Quote
+            </span>
+            Rider
+          </Link>
         <form
           onSubmit={handleSubmit}
           className="flex items-center flex-grow max-w-xs"
