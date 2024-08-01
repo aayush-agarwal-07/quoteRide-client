@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/theme/themeSlice";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useEffect, useState } from "react";
-import { gsap } from "gsap";
 
 export default function Header() {
   const path = useLocation().pathname;
@@ -27,10 +26,7 @@ export default function Header() {
     }
   }, [location.search]);
 
-  useEffect(() => {
-    // Initial hide of dropdown
-    gsap.set(dropdownRef.current, { opacity: 0, pointerEvents: "none" });
-  }, []);
+
 
   const handleSignout = async () => {
     try {
