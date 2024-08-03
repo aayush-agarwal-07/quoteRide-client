@@ -17,7 +17,6 @@ export default function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const dropdownRef = useRef(null);
   const profileButtonRef = useRef(null);
-  
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -80,19 +79,19 @@ export default function Header() {
 
   return (
     <header className="bg-white dark:bg-gray-900 border-b-2 border-gray-200 dark:border-gray-700">
-      <div className="max-w-[90%] mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="w-[100%] sm:max-w-[90%] sm:mx-auto px-4 py-[1px]sm:py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img
-            className="w-[70px]"
+            className="w-[50px] sm:w-[70px]"
             src="https://firebasestorage.googleapis.com/v0/b/projects-images.appspot.com/o/logo-(1).png?alt=media&token=fd468f51-42a9-488a-8b93-0582a7ee8389"
           />
         </Link>
-        <Link to='/' className='font-bold text-4xl dark:text-white'>
-            <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
-              Quote
-            </span>
-            Rider
-          </Link>
+        <Link to="/" className="font-bold text-xl sm:text-4xl dark:text-white">
+          <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
+            Quote
+          </span>
+          Rider
+        </Link>
         <form
           onSubmit={handleSubmit}
           className="flex items-center flex-grow max-w-xs"
@@ -111,12 +110,12 @@ export default function Header() {
             <AiOutlineSearch />
           </button>
         </form>
-        <nav className="">
+        <nav className="hidden sm:block">
           <ul className="flex space-x-4 gap-9">
             <li>
               <Link
                 to="/"
-                className={`text-gray-700 dark:text-gray-300 ${
+                className={`text-gray-700 dark:text-gray-300 text-xl ${
                   path === "/" ? "font-semibold" : ""
                 }`}
               >
@@ -126,7 +125,7 @@ export default function Header() {
             <li>
               <Link
                 to="/about"
-                className={`text-gray-700 dark:text-gray-300 ${
+                className={`text-gray-700 dark:text-gray-300 text-xl ${
                   path === "/about" ? "font-semibold" : ""
                 }`}
               >
@@ -136,7 +135,7 @@ export default function Header() {
             <li>
               <Link
                 to="/all-posts"
-                className={`text-gray-700 dark:text-gray-300 ${
+                className={`text-gray-700 dark:text-gray-300 text-xl ${
                   path === "/projects" ? "font-semibold" : ""
                 }`}
               >
@@ -146,7 +145,7 @@ export default function Header() {
             <li>
               <Link
                 to="/all-videos"
-                className={`text-gray-700 dark:text-gray-300 ${
+                className={`text-gray-700 dark:text-gray-300 text-xl ${
                   path === "/projects" ? "font-semibold" : ""
                 }`}
               >
@@ -172,7 +171,7 @@ export default function Header() {
                 <img
                   src={currentUser.profilePicture}
                   alt="user"
-                  className="w-10 h-10 rounded-full object-cover"
+                  className="w-7 h-7 sm:w-10 sm:h-10 rounded-full object-cover"
                 />
               </button>
               <div

@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
 import VideoCard from "../components/VideoCard";
+import GooeyComponent from "../components/GooeyComponent";
+import VideoPostAnimation from "../components/VideoPostAnimation";
+import Play from "../components/Play";
+import TopComments from "../components/TopComments";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [videos, setVideos] = useState([]);
-  
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -16,8 +19,6 @@ export default function Home() {
     };
     fetchVideos();
   }, []);
-
-
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -33,9 +34,15 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex flex-col gap-6 py-28 px-3 max-w-7xl mx-auto ">
-        <h1 className="text-3xl font-bold lg:text-9xl">Welcome <br/>to my Blog</h1>
+      <div className="flex gap-6 py-2 sm:py-28 px-3 max-w-7xl mx-auto">
+        <h1 className="text-7xl font-bold sm:text-9xl mt-[20vh] sm:mt-0">
+          Welcome <br />
+          to my Blog
+        </h1>
+        <GooeyComponent />
       </div>
+      <VideoPostAnimation />
+      <Play />
 
       <div className="max-w-7xl mx-auto p-3 flex flex-col gap-8 py-7">
         {posts && posts.length > 0 && (
@@ -59,7 +66,9 @@ export default function Home() {
       <div className="max-w-7xl mx-auto p-3 flex flex-col gap-8 py-7">
         {videos && videos.length > 0 && (
           <div className="flex flex-col gap-6">
-            <h2 className="text-2xl font-semibold text-center">Recent Videos</h2>
+            <h2 className="text-2xl font-semibold text-center">
+              Recent Videos
+            </h2>
             <div className="flex flex-wrap gap-4">
               {recentVideos.map((video) => (
                 <VideoCard key={video._id} video={video} />
@@ -73,6 +82,9 @@ export default function Home() {
             </Link>
           </div>
         )}
+      </div>
+      <div className="w-full h-[25vh] sm:h-[50vh] bg-[#e5ded8] pt-[2.5vh] sm:pt-[5vh]">
+        <TopComments />
       </div>
     </div>
   );

@@ -16,11 +16,13 @@ import CreateVideo from './pages/CreateVideo';
 import UpdateVideo from './pages/UpdateVideo';
 import SearchPost from './pages/SearchPost';
 import SearchVideo from './pages/SearchVideo';
+import Navbar from './components/Navbar';
 
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Navbar/>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
