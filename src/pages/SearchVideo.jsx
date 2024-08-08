@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import VideoCard from '../components/VideoCard';
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import VideoCard from "../components/VideoCard";
 
 export default function SearchVideo() {
   const [sidebarData, setSidebarData] = useState({
-    searchTerm: '',
-    sort: 'desc',
+    searchTerm: "",
+    sort: "desc",
   });
 
   const [videos, setVideos] = useState([]);
@@ -21,7 +21,9 @@ export default function SearchVideo() {
       const urlParams = new URLSearchParams(location.search);
       const searchQuery = urlParams.toString();
       try {
-        const res = await fetch(`/api/video/getvideos?${searchQuery}`);
+        const res = await fetch(
+          `https://quoterider-server.onrender.com/api/video/getvideos?${searchQuery}`
+        );
         if (!res.ok) {
           setLoading(false);
           return;
@@ -41,13 +43,13 @@ export default function SearchVideo() {
     };
 
     const urlParams = new URLSearchParams(location.search);
-    const searchTermFromUrl = urlParams.get('searchTerm');
-    const sortFromUrl = urlParams.get('sort');
+    const searchTermFromUrl = urlParams.get("searchTerm");
+    const sortFromUrl = urlParams.get("sort");
 
     if (searchTermFromUrl || sortFromUrl) {
       setSidebarData({
-        searchTerm: searchTermFromUrl || '',
-        sort: sortFromUrl || 'desc',
+        searchTerm: searchTermFromUrl || "",
+        sort: sortFromUrl || "desc",
       });
     }
 
@@ -74,10 +76,12 @@ export default function SearchVideo() {
   const handleShowMore = async () => {
     const startIndex = videos.length;
     const urlParams = new URLSearchParams(location.search);
-    urlParams.set('startIndex', startIndex);
+    urlParams.set("startIndex", startIndex);
     const searchQuery = urlParams.toString();
     try {
-      const res = await fetch(`/api/video/getvideos?${searchQuery}`);
+      const res = await fetch(
+        `https://quoterider-server.onrender.com/api/video/getvideos?${searchQuery}`
+      );
       if (!res.ok) return;
       const data = await res.json();
       setVideos((prevVideos) => [...prevVideos, ...data.videos]);
@@ -88,57 +92,57 @@ export default function SearchVideo() {
   };
 
   return (
-    <div className='flex flex-col md:flex-row'>
-      <div className='p-7 border-b md:border-r md:min-h-screen border-gray-500'>
-        <form className='flex flex-col gap-8' onSubmit={handleSubmit}>
-          <div className='flex items-center gap-2'>
-            <label className='whitespace-nowrap font-semibold'>
+    <div className="flex flex-col md:flex-row">
+      <div className="p-7 border-b md:border-r md:min-h-screen border-gray-500">
+        <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+          <div className="flex items-center gap-2">
+            <label className="whitespace-nowrap font-semibold">
               Search Term:
             </label>
             <input
-              placeholder='Search...'
-              id='searchTerm'
-              type='text'
+              placeholder="Search..."
+              id="searchTerm"
+              type="text"
               value={sidebarData.searchTerm}
               onChange={handleChange}
-              className='border rounded-md p-2'
+              className="border rounded-md p-2"
             />
           </div>
-          <div className='flex items-center gap-2'>
-            <label className='font-semibold'>Sort:</label>
+          <div className="flex items-center gap-2">
+            <label className="font-semibold">Sort:</label>
             <select
               onChange={handleChange}
               value={sidebarData.sort}
-              id='sort'
-              className='border rounded-md p-2'
+              id="sort"
+              className="border rounded-md p-2"
             >
-              <option value='desc'>Latest</option>
-              <option value='asc'>Oldest</option>
+              <option value="desc">Latest</option>
+              <option value="asc">Oldest</option>
             </select>
           </div>
           <button
-            type='submit'
-            className='bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-md'
+            type="submit"
+            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-md"
           >
             Apply Filters
           </button>
         </form>
       </div>
-      <div className='w-full'>
-        <h1 className='text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5'>
+      <div className="w-full">
+        <h1 className="text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5">
           Videos results:
         </h1>
-        <div className='p-7 flex flex-wrap gap-4'>
-          {loading && <p className='text-xl text-gray-500'>Loading...</p>}
+        <div className="p-7 flex flex-wrap gap-4">
+          {loading && <p className="text-xl text-gray-500">Loading...</p>}
           {!loading && videos.length === 0 && (
-            <p className='text-xl text-gray-500'>No videos found.</p>
+            <p className="text-xl text-gray-500">No videos found.</p>
           )}
           {!loading &&
             videos.map((video) => <VideoCard key={video._id} video={video} />)}
           {showMore && (
             <button
               onClick={handleShowMore}
-              className='text-teal-500 text-lg hover:underline p-7 w-full'
+              className="text-teal-500 text-lg hover:underline p-7 w-full"
             >
               Show More
             </button>
