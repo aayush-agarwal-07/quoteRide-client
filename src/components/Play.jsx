@@ -78,6 +78,7 @@ const Play = () => {
       }`}
     >
       {/* The animated div */}
+      <h1 className="italic text-4xl">Most loved video!!</h1>
       {isVisible && (
         <div
           ref={closeRef}

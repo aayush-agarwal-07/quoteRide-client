@@ -35,9 +35,9 @@ export default function Home() {
   return (
     <div>
       <div className="flex gap-6 py-2 sm:py-28 px-3 max-w-7xl mx-auto">
-        <h1 className="text-7xl font-bold sm:text-9xl mt-[20vh] sm:mt-0">
-          Welcome <br />
-          to my Blog
+        <h1 className="text-7xl font-bold sm:text-8xl mt-[20vh] sm:mt-0 sm:absolute sm:w-[800px]">
+        "Encourages expressing<br />
+        ideas through impactful quotes"
         </h1>
         <GooeyComponent />
       </div>
@@ -83,7 +83,7 @@ export default function Home() {
           </div>
         )}
       </div>
-      <div className="w-full h-[25vh] sm:h-[50vh] bg-[#e5ded8] pt-[2.5vh] sm:pt-[5vh]">
+      <div className="w-full h-[25vh] sm:h-[50vh] bg-[#e5ded8] pt-[2.5vh] sm:pt-[3vh]">
         <TopComments />
       </div>
     </div>

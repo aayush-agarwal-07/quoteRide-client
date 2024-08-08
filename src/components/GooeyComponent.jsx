@@ -8,7 +8,7 @@ const GooeyComponent = () => {
                     blur-[20px] animate-gooey -z-100"
         style={{
           top: "10%",
-          left: "25%",
+          left: "60%",
         }}
       />
     </div>
