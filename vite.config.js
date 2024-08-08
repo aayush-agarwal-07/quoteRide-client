@@ -1,33 +1,12 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
-import { visualizer } from 'rollup-plugin-visualizer';
+// vite.config.js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
 
 export default defineConfig({
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://quoterider-server.onrender.com',
-        secure: false,
-        changeOrigin: true,
-      },
-    },
-  },
+  base: "/", // Ensure this is set to the correct base path if needed
   build: {
-    outDir: 'dist',
-    chunkSizeWarningLimit: 2000, // Adjust the size limit (in KB) as needed
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return id
-              .toString()
-              .split('node_modules/')[1]
-              .split('/')[0]
-              .toString();
-          }
-        },
-      },
-    },
+    outDir: "dist",
+    assetsDir: "assets", // Ensure assets are placed in the 'assets' directory
   },
-  plugins: [react(), visualizer()],
+  plugins: [react()],
 });
