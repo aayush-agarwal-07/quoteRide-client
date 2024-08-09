@@ -1,5 +1,3 @@
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import {
   getDownloadURL,
   getStorage,
@@ -11,6 +9,7 @@ import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useNavigate } from "react-router-dom";
+import TiptapEditor from "../components/Tiptap/Tiptap";
 
 export default function CreateVideo() {
   const [thumbnailFile, setThumbnailFile] = useState(null);
@@ -89,7 +88,7 @@ export default function CreateVideo() {
   };
 
   return (
-    <div className="p-4 max-w-3xl mx-auto min-h-screen">
+    <div className="p-4 max-w-3xl mx-auto h-350vh mb-[40vh]">
       <h1 className="text-3xl font-semibold text-center my-8">
         Create a Video
       </h1>
@@ -149,8 +148,8 @@ export default function CreateVideo() {
             className="w-full h-72 object-contain mt-4"
           />
         )}
-        <ReactQuill
-          theme="snow"
+        <TiptapEditor
+          value={formData.content}
           placeholder="Write something..."
           className="h-48"
           required
@@ -158,18 +157,19 @@ export default function CreateVideo() {
             setFormData({ ...formData, content: value });
           }}
         />
+
         <button
           type="submit"
           className={`mt-4 px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg shadow-md hover:from-purple-600 hover:to-pink-600 transition duration-300 absolute ${
-            formData.thumbnail ? "-bottom-[5%]" : "bottom-[26%]"
+            formData.thumbnail ? "-bottom-[30%]" : "bottom-[1%]"
           } ${
             formData.thumbnail
-              ? "-bottom-[5%]"
+              ? "-bottom-[30%]"
               : thumbnailUploadError
-              ? "bottom-[21%]" // Replace with the style you want when thumbnailUploadError is true
+              ? "-bottom-[4%]" // Replace with the style you want when thumbnailUploadError is true
               : thumbnailUploadProgress
-              ? "bottom-[24%]" // Replace with the style you want when thumbnailUploadProgress is true
-              : "bottom-[26%]" // Default style when none of the conditions are true
+              ? "-bottom-[1%]" // Replace with the style you want when thumbnailUploadProgress is true
+              : "bottom-[1%]" // Default style when none of the conditions are true
           }`}
         >
           Publish
