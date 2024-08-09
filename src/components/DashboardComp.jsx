@@ -300,9 +300,9 @@ export default function DashboardComp() {
                 <tr key={video._id}>
                   <td className="px-6 py-4">
                     <img
-                      src={video.image}
+                      src={video.thumbnail}
                       alt="video"
-                      className="w-14 h-10 rounded-md bg-gray-500"
+                      className="w-14 h-10 rounded-md bg-gray-500 object-cover"
                     />
                   </td>
                   <td className="px-6 py-4 w-96">{video.title}</td>
