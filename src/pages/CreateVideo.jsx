@@ -63,13 +63,16 @@ export default function CreateVideo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/api/video/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...formData, videoUrl }),
-      });
+      const res = await fetch(
+        "https://quoterider-server.onrender.com/api/video/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...formData, videoUrl }),
+        }
+      );
       const data = await res.json();
       if (!res.ok) {
         setPublishError(data.message);

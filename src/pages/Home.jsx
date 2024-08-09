@@ -13,7 +13,9 @@ export default function Home() {
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await fetch("/api/video/getVideos");
+      const res = await fetch(
+        "https://quoterider-server.onrender.com/api/video/getVideos"
+      );
       const data = await res.json();
       setVideos(data.videos);
     };
@@ -22,7 +24,9 @@ export default function Home() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch("/api/post/getPosts");
+      const res = await fetch(
+        "https://quoterider-server.onrender.com/api/post/getPosts"
+      );
       const data = await res.json();
       setPosts(data.posts);
     };
@@ -36,8 +40,9 @@ export default function Home() {
     <div>
       <div className="flex gap-6 py-2 sm:py-28 px-3 max-w-7xl mx-auto">
         <h1 className="text-7xl font-bold sm:text-8xl mt-[20vh] sm:mt-0 sm:absolute sm:w-[800px]">
-        "Encourages expressing<br />
-        ideas through impactful quotes"
+          "Encourages expressing
+          <br />
+          ideas through impactful quotes"
         </h1>
         <GooeyComponent />
       </div>

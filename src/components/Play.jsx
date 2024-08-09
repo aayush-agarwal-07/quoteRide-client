@@ -88,7 +88,7 @@ const Play = () => {
             ref={videoRef}
             autoPlay
             controls
-            src="src/assets/Live up on your  Own Terms  __ Quote Rider.mp4"
+            src="https://firebasestorage.googleapis.com/v0/b/projects-images.appspot.com/o/quoterider-client%2FLive%20up%20on%20your%20%20Own%20Terms%20%20__%20Quote%20Rider.mp4?alt=media&token=0d2ddb7f-9ee6-4802-8c9e-0e4b84f0e8f7"
             className="absolute sm:top-[15%] left-[15%] sm:left-[35%] w-[70vw] h-[50vh] sm:w-[30vw] sm:h-[39vw] object-cover z-50 rounded-3xl"
           ></video>
           <div
