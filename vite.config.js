@@ -9,6 +9,9 @@ export default defineConfig({
     assetsDir: "assets", // Ensure assets are placed in the 'assets' directory
     chunkSizeWarningLimit: 2000, // Adjust the size limit (in KB) as needed
     rollupOptions: {
+      external: [
+        'react-quill/dist/quill.snow.css'
+      ],
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
