@@ -1,3 +1,5 @@
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import {
   getDownloadURL,
   getStorage,
@@ -9,7 +11,6 @@ import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useNavigate } from "react-router-dom";
-import TiptapEditor from "../components/Tiptap/Tiptap";
 
 export default function CreateVideo() {
   const [thumbnailFile, setThumbnailFile] = useState(null);
@@ -148,10 +149,10 @@ export default function CreateVideo() {
             className="w-full h-72 object-contain mt-4"
           />
         )}
-        <TiptapEditor
-          value={formData.content}
-          placeholder="Write something..."
-          className="h-48"
+        <ReactQuill
+          theme='snow'
+          placeholder='Write something...'
+          className='h-72 mb-6'
           required
           onChange={(value) => {
             setFormData({ ...formData, content: value });

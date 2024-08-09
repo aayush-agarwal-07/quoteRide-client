@@ -106,7 +106,7 @@ export default function DashVideos() {
                     <td className="px-6 py-4">
                       <Link to={`/video/${video.slug}`}>
                         <img
-                          src={video.image}
+                          src={video.thumbnail}
                           alt={video.title}
                           className="w-20 h-10 object-cover bg-gray-500"
                         />
