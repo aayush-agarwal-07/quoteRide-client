@@ -83,13 +83,13 @@ export default function Header() {
   return (
     <header className="bg-white dark:bg-gray-900 border-b-2 border-gray-200 dark:border-gray-700">
       <div className="w-[100%] sm:max-w-[90%] sm:mx-auto px-4 py-[1px]sm:py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center w-[20vw]">
           <img
             className="w-[50px] sm:w-[70px]"
             src="https://firebasestorage.googleapis.com/v0/b/projects-images.appspot.com/o/logo-(1).png?alt=media&token=fd468f51-42a9-488a-8b93-0582a7ee8389"
           />
         </Link>
-        <Link to="/" className="font-bold text-xl sm:text-4xl dark:text-white">
+        <Link to="/" className="font-semibold sm:text-4xl dark:text-white absolute">
           <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
             Quote
           </span>
@@ -119,7 +119,7 @@ export default function Header() {
               <Link
                 to="/"
                 className={`text-gray-700 dark:text-gray-300 text-xl ${
-                  path === "/" ? "font-semibold" : ""
+                  path === "/" ? "font-semibold underline" : ""
                 }`}
               >
                 Home
@@ -129,7 +129,7 @@ export default function Header() {
               <Link
                 to="/about"
                 className={`text-gray-700 dark:text-gray-300 text-xl ${
-                  path === "/about" ? "font-semibold" : ""
+                  path === "/about" ? "font-semibold underline" : ""
                 }`}
               >
                 About
@@ -139,7 +139,7 @@ export default function Header() {
               <Link
                 to="/all-posts"
                 className={`text-gray-700 dark:text-gray-300 text-xl ${
-                  path === "/projects" ? "font-semibold" : ""
+                  path === "/all-posts" ? "font-semibold underline" : ""
                 }`}
               >
                 Posts
@@ -149,7 +149,7 @@ export default function Header() {
               <Link
                 to="/all-videos"
                 className={`text-gray-700 dark:text-gray-300 text-xl ${
-                  path === "/projects" ? "font-semibold" : ""
+                  path === "/all-videos" ? "font-semibold underline" : ""
                 }`}
               >
                 Videos

@@ -53,12 +53,9 @@ export default function DashPosts() {
   const handleDeletePost = async () => {
     setShowModal(false);
     try {
-      const res = await fetch(
-        `https://quoterider-server.onrender.com/api/post/deletepost/${postIdToDelete}/${currentUser._id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const res = await fetch(`/api/post/deletepost/${postIdToDelete}/${currentUser._id}`, {
+        method: 'DELETE',
+      });
       const data = await res.json();
       if (!res.ok) {
         console.log(data.message);

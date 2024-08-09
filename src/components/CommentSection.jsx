@@ -47,9 +47,7 @@ export default function CommentSection({ postId }) {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const res = await fetch(
-          "https://quoterider-server.onrender.com/api/comment/getPostComments/${postId}"
-        );
+        const res = await fetch(`${apiBaseUrl}/api/comment/getPostComments/${postId}`);
         if (res.ok) {
           const data = await res.json();
           setComments(data);

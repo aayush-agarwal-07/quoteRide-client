@@ -22,7 +22,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="w-full h-[4vh] p-2 flex items-center justify-startgap-4 overflow-hidden flex-nowrap border-b-2 border-b-slate-100">
+    <div className="w-full h-[4vh] p-2 hidden items-center justify-start gap-4 overflow-hidden flex-nowrap border-b-2 border-b-slate-100">
       <div
         ref={ref1}
         className="flex-none w-[100vw] h-[90%] flex justify-between items-center gap-2"

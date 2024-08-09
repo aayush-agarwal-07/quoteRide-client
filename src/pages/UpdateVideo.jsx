@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
-import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { useEffect, useState } from 'react';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function UpdateVideo() {
   const [file, setFile] = useState(null);
@@ -183,6 +185,16 @@ export default function UpdateVideo() {
           </div>
         )}
 
+        <ReactQuill
+          theme='snow'
+          value={formData.content || ''}
+          placeholder='Write something...'
+          className='h-72 mb-12'
+          required
+          onChange={(value) => {
+            setFormData({ ...formData, content: value });
+          }}
+        />
         <button
           type="submit"
           className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-md"

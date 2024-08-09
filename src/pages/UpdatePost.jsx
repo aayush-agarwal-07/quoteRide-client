@@ -1,3 +1,5 @@
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import {
   getDownloadURL,
   getStorage,
@@ -159,7 +161,16 @@ export default function UpdatePost() {
             className="w-full h-72 object-cover mt-4"
           />
         )}
-
+        <ReactQuill
+          theme='snow'
+          value={formData.content || ''}
+          placeholder='Write something...'
+          className='h-72 mb-12'
+          required
+          onChange={(value) => {
+            setFormData({ ...formData, content: value });
+          }}
+        />
         <button
           type="submit"
           className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-md"
